@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.target=Docente
+comment0.text=\r\n\ La\ clase\ Docente\ se\ extiende\ de\ la\ clase\ abstracta\ Socio,\ definiendo\r\n\ atributos\ y\ comportamientos\ especificos\ de\ la\ clase.\r\n\r\n\ @author\ Quintana\ Antonio\r\n\ @version\ 01/11/2025\r\n
+comment1.params=p_dniSocio\ p_nombre\ p_diasPrestamo\ p_area
+comment1.target=Docente(int,\ java.lang.String,\ int,\ java.lang.String)
+comment1.text=\r\n\ Constructor\ de\ la\ clase\ Docente\ que\ no\ recibe\ ningun\ prestamo\ por\ parametro\r\n\ \r\n\ @param\ p_dniSocio\ es\ el\ dni\ del\ socio\r\n\ @param\ p_nombre\ nombre\ del\ socio\r\n\ @param\ p_diasPrestamo\ cantidad\ de\ dias\ de\ prestamo\ asignadas\r\n\ @param\ p_area\ area\ a\ la\ que\ pertenece\ el\ docente\r\n
+comment2.params=p_dniSocio\ p_nombre\ p_diasPrestamo\ p_prestamo\ p_area
+comment2.target=Docente(int,\ java.lang.String,\ int,\ Prestamo,\ java.lang.String)
+comment2.text=\r\n\ Constructor\ de\ la\ clase\ Docente\ que\ recibe\ un\ prestamo\ por\ parametro\r\n\ \r\n\ @param\ p_dniSocio\ es\ el\ dni\ del\ socio\r\n\ @param\ p_nombre\ nombre\ del\ socio\r\n\ @param\ p_diasPrestamo\ cantidad\ de\ dias\ de\ prestamo\ asignadas\r\n\ @param\ p_prestamo\ es\ un\ prestamo\ registrado\ al\ docente\r\n\ @param\ p_area\ area\ a\ la\ que\ pertenece\ el\ docente\r\n
+comment3.params=p_dniSocio\ p_nombre\ p_diasPrestamo\ p_prestamos\ p_area
+comment3.target=Docente(int,\ java.lang.String,\ int,\ java.util.ArrayList,\ java.lang.String)
+comment3.text=\r\n\ Constructor\ de\ la\ clase\ Docente\ que\ recibe\ un\ ArrayList\ de\ prestamos\ por\ parametro\r\n\ \r\n\ @param\ p_dniSocio\ es\ el\ dni\ del\ socio\r\n\ @param\ p_nombre\ nombre\ del\ socio\r\n\ @param\ p_diasPrestamo\ cantidad\ de\ dias\ de\ prestamo\ asignadas\r\n\ @param\ p_prestamos\ es\ un\ ArrayList\ de\ prestamos\ registrados\ al\ Docente\r\n\ @param\ p_area\ area\ a\ la\ que\ pertenece\ el\ docente\r\n
+comment4.params=p_area
+comment4.target=void\ setArea(java.lang.String)
+comment5.params=
+comment5.target=java.lang.String\ getArea()
+comment6.params=
+comment6.target=boolean\ esResponsable()
+comment6.text=\r\n\ esResponsable\ primero\ analiza\ si\ no\ tiene\ nigun\ prestamo\ vencido\ reutilizando\ el\ metodo\ puedePedir\r\n\ de\ la\ clase\ padre,\ luego\ recorre\ el\ ArrayList\ de\ prestamos\ del\ docente\ y\ analiza\ si\ algun\ prestamo\r\n\ devolvi\u00F3\ fuera\ de\ t\u00E9rmino.\r\n\ \r\n\ @return\ true\ o\ false\ dependiendo\ si\ nunca\ devolvi\u00F3\ un\ libro\ luego\ del\ vencimiento\r\n
+comment7.params=p_dias
+comment7.target=void\ cambiarDiasDePrestamo(int)
+comment7.text=\r\n\ Cambiar\ dias\ de\ prestamo,\ permite\ asignarle\ m\u00E1s\ dias\ de\ prestamos\ al\ docente\ dependiendo\ si\ es\ resposable\r\n\ o\ no,\ agregando\ los\ dias\ que\ recibe\ por\ parametro\ a\ la\ cantidad\ de\ dias\ que\ ya\ posee\ que\ por\ defecto\ son\ 5\r\n\ \r\n\ @param\ p_dias\ cantidad\ de\ dias\ de\ prestamos\ a\ agregar\r\n
+comment8.params=
+comment8.target=java.lang.String\ soyDeLaClase()
+comment8.text=\r\n\ Retorna\ un\ String\ con\ el\ nombre\ de\ la\ clase\ o\ tipo\ de\ socio\r\n\ \r\n\ @return\ Tipo\ de\ socio\r\n
+numComments=9

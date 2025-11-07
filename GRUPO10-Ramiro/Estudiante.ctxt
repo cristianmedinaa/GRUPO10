@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=Estudiante
+comment0.text=\r\n\ La\ clase\ Estudiante\ se\ extiende\ de\ la\ clase\ abstracta\ Socio,\ definiendo\r\n\ atributos\ y\ comportamientos\ especificos\ de\ la\ clase.\r\n\r\n\ @author\ Quintana\ Antonio\r\n\ @version\ 01/11/2025\r\n
+comment1.params=p_dniSocio\ p_nombre\ p_diasPrestamo\ p_carrera
+comment1.target=Estudiante(int,\ java.lang.String,\ int,\ java.lang.String)
+comment1.text=\r\n\ Constructor\ de\ la\ clase\ Estudiante\ que\ no\ recibe\ ningun\ prestamo\ por\ parametro\r\n\ \r\n\ @param\ p_dniSocio\ es\ el\ dni\ del\ socio\r\n\ @param\ p_nombre\ nombre\ del\ socio\r\n\ @param\ p_diasPrestamo\ cantidad\ de\ dias\ de\ prestamo\ asignadas\r\n\ @param\ p_carrera\ carrera\ a\ la\ que\ pertenece\ el\ estudiante\r\n
+comment2.params=p_dniSocio\ p_nombre\ p_diasPrestamo\ p_prestamo\ p_carrera
+comment2.target=Estudiante(int,\ java.lang.String,\ int,\ Prestamo,\ java.lang.String)
+comment2.text=\r\n\ Constructor\ de\ la\ clase\ Estudiante\ que\ recibe\ un\ solo\ prestamo\ por\ paramatro\r\n\ \r\n\ @param\ p_dniSocio\ es\ el\ dni\ del\ socio\r\n\ @param\ p_nombre\ nombre\ del\ socio\r\n\ @param\ p_diasPrestamo\ cantidad\ de\ dias\ de\ prestamo\ asignadas\r\n\ @param\ p_prestamo\ es\ un\ prestamo\ registrado\ al\ estudiante\r\n\ @param\ p_carrera\ carrera\ a\ la\ que\ pertenece\ el\ estudiante\r\n
+comment3.params=p_dniSocio\ p_nombre\ p_diasPrestamo\ p_prestamos\ p_carrera
+comment3.target=Estudiante(int,\ java.lang.String,\ int,\ java.util.ArrayList,\ java.lang.String)
+comment3.text=\r\n\ Constructor\ de\ la\ clase\ Estudiante\ que\ recibe\ un\ arrayList\ de\ prestamos\r\n\ \r\n\ @param\ p_dniSocio\ es\ el\ dni\ del\ socio\r\n\ @param\ p_nombre\ nombre\ del\ socio\r\n\ @param\ p_diasPrestamo\ cantidad\ de\ dias\ de\ prestamo\ asignadas\r\n\ @param\ p_prestamo\ es\ un\ arrayList\ de\ prestamos\ registrados\ al\ estudiante\r\n\ @param\ p_carrera\ carrera\ a\ la\ que\ pertenece\ el\ estudiante\r\n
+comment4.params=p_carrera
+comment4.target=void\ setCarrera(java.lang.String)
+comment5.params=
+comment5.target=java.lang.String\ getCarrera()
+comment6.params=
+comment6.target=boolean\ puedePedir()
+comment6.text=\r\n\ puedePerdir\ redefine\ y\ especializa\ el\ comportamiento\ para\ la\ clase\ estudiante,\ donde\ primero\ analiza\ si\ el\ socio\ no\r\n\ posee\ prestamos\ vencidos\ y\ luego\ como\ es\ un\ estudiante\ se\ pregunta\ si\ no\ posee\ mas\ de\ 3\ prestamos\ en\ su\ poder.\r\n\ \r\n\ @return\ true\ o\ false\ dependiendo\ si\ cumple\ con\ la\ condiciones\ para\ pedir\ un\ libro\r\n
+comment7.params=
+comment7.target=java.lang.String\ soyDeLaClase()
+comment7.text=\r\n\ Retorna\ un\ String\ con\ el\ nombre\ de\ la\ clase\ o\ tipo\ de\ socio\r\n\ \r\n\ @return\ Tipo\ de\ socio\r\n
+numComments=8
