@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=Docente
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Docente\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=p_dniSocio\ p_nombre\ p_diasPrestamo\ p_area
+comment1.target=Docente(int,\ java.lang.String,\ int,\ java.lang.String)
+comment2.params=p_dniSocio\ p_nombre\ p_diasPrestamo\ p_prestamo\ p_area
+comment2.target=Docente(int,\ java.lang.String,\ int,\ Prestamo,\ java.lang.String)
+comment3.params=p_dniSocio\ p_nombre\ p_diasPrestamo\ p_prestamos\ p_area
+comment3.target=Docente(int,\ java.lang.String,\ int,\ java.util.ArrayList,\ java.lang.String)
+comment4.params=p_area
+comment4.target=void\ setArea(java.lang.String)
+comment5.params=
+comment5.target=java.lang.String\ getArea()
+comment6.params=
+comment6.target=boolean\ esResponsable()
+comment7.params=p_dias
+comment7.target=void\ cambiarDiasDePrestamo(int)
+comment8.params=
+comment8.target=java.lang.String\ soyDeLaClase()
+numComments=9
