@@ -23,6 +23,16 @@ public abstract class Socio
         this.setPrestamos(new ArrayList());
     }
     /**
+     * Constructor caso 1.
+     */
+    public Socio(int p_dniSocio, String p_nombre, int p_diasPrestamo, Prestamo p_prestamo){
+        this.setDniSocio(p_dniSocio);
+        this.setNombre(p_nombre);
+        this.setDiasPrestamo(p_diasPrestamo);
+        this.setPrestamos(new ArrayList());
+        this.agregarPrestamo(p_prestamo);
+    }
+    /**
      * Constructor caso *.
      */
     public Socio(int p_dniSocio, String p_nombre, int p_diasPrestamo, ArrayList<Prestamo> p_prestamos){
