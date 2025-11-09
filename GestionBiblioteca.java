@@ -92,10 +92,6 @@ public class GestionBiblioteca {
                                 
                             case 3: 
                                 GestionBiblioteca.devolverLibro();                        
-                                }else{
-                                    System.out.println("--Primero debe agregar libros (Opcion '1')!--");
-                                }
-                                
                                 break;
                                 
                             case 4: 
@@ -374,34 +370,35 @@ public class GestionBiblioteca {
                                 
         System.out.printf("\n\nEl libro %s a sido agregado con exito!",tituloP);
     }
+    
     private static void prestarLibro(){
         System.out.println("\f\t\t--ESPACIO 'PRESTAR LIBRO'--\n\n");
                                 
-                                if(biblioteca.getArrayLibros().size() > 0){
-                                    int dniBusca,libroBusca;
-                                    
-                                    System.out.println("Ingrese el DNI del socio al que desea prestar");
-                                    dniBusca = sc.nextInt();
-                                    sc.nextLine();
-                                    System.out.println("Seleccione un libro que no este Prestado (Indice int): ");
-                                    System.out.println(biblioteca.listaDeLibros());
-                                    libroBusca = sc.nextInt();
-                                    sc.nextLine();
-                                    
-    
-                                    Socio socioAPrestar = biblioteca.buscarSocio(dniBusca);
-                                    Libro libroAPrestar = biblioteca.getArrayLibros().get(libroBusca - 1);
-                        
-                                    if(socioAPrestar == null){
-                                        System.out.println("\n\n--No se encontro el socio relacionado a ese DNI--\n\n");
-                                    } else {
-                                        Calendar fechaHoy = Calendar.getInstance();
-                                        System.out.printf("\n\nEl prestamo del libro %s fue '%s'",libroAPrestar.getTitulo(),  biblioteca.prestarLibro(fechaHoy, socioAPrestar, libroAPrestar));
-                                    }
-                                }else{
-                                    System.out.println("--Primero debe agregar libros (Opcion '1')!--");
-                                }
+        if(biblioteca.getArrayLibros().size() > 0){
+            int dniBusca,libroBusca;
+                                        
+            System.out.println("Ingrese el DNI del socio al que desea prestar");
+            dniBusca = sc.nextInt();
+            sc.nextLine();
+            System.out.println("Seleccione un libro que no este Prestado (Indice int): ");
+            System.out.println(biblioteca.listaDeLibros());
+            libroBusca = sc.nextInt();
+            sc.nextLine();
+                                        
+            Socio socioAPrestar = biblioteca.buscarSocio(dniBusca);
+            Libro libroAPrestar = biblioteca.getArrayLibros().get(libroBusca - 1);
+                            
+            if(socioAPrestar == null){
+                System.out.println("\n\n--No se encontro el socio relacionado a ese DNI--\n\n");
+            } else {
+                Calendar fechaHoy = Calendar.getInstance();
+                System.out.printf("\n\nEl prestamo del libro %s fue '%s'",libroAPrestar.getTitulo(),  biblioteca.prestarLibro(fechaHoy, socioAPrestar, libroAPrestar));
+            }
+        }else{
+            System.out.println("--Primero debe agregar libros (Opcion '1')!--");
+        }
     }
+    
     private static void devolverLibro(){
         System.out.println("\f\t\t--ESPACIO 'DEVOLVER LIBRO'--\n\n");
                                 
@@ -419,7 +416,10 @@ public class GestionBiblioteca {
                 System.out.println("\n\n--El libro a sido devuelto con exito!--\n\n");
             }catch(LibroNoPrestadoException e){
                 System.out.println(e);
-            }                                               
+            }
+        }else{
+            System.out.println("--Primero debe agregar libros (Opcion '1')!--");
+        }
     }
         
     private static void prestamosVencidos(){}
