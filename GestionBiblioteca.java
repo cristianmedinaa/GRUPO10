@@ -1,13 +1,12 @@
 import java.io.*;
 import java.util.*;
 
-//Prueba
 /**
  * Clase principal que gestiona la Biblioteca, ejecuta los informes
  * y maneja la persistencia de datos usando archivos secuenciales.
  * 
  *
- * @author (Medina Cristian, Nataniel Vallejos,Pannunzio Nicolas, Ramirez Emiliano, Ramiro Nuñez,Quintana Antonio)
+ * @author (Medina Cristian, Nataniel Vallejos, Pannunzio Nicolas, Ramirez Emiliano, Ramiro Nuñez, Quintana Antonio)
  * @version 07/11/2025
  */
 public class GestionBiblioteca {
@@ -52,7 +51,7 @@ public class GestionBiblioteca {
                 }
                 System.out.println("\f");
                 
-                
+            
                 //Opciones generales para tratar los datos del menu
                 System.out.printf("\t\t--BIENVENIDO A LA BIBLIOTECA '%s'--", nombreBiblioteca);
                 System.out.println("\n\n\t|1 - Gestion de libros"
@@ -66,276 +65,17 @@ public class GestionBiblioteca {
                 //Switch que despliega dentro suyo un manojo de opciones para gestionar libros o socios
                 switch(option){
                     case 1: 
-                        int option1;
-                        System.out.println("\f\t\t--ESPACIO DE GESTION DE LIBROS--"
-                                            + "\n\n\t|1-Nuevo libro"
-                                            + "\n\t|2-Prestar libro"
-                                            + "\n\t|3-Devolver libro"
-                                            + "\n\t|4-Prestamos vencidos"
-                                            + "\n\t|5-Quien tiene el libro"
-                                            + "\n\t|6-Lista de libros"
-                                            + "\n\t|7-Lista de titulos"
-                                            + "\n\t|8-Eliminar libro"
-                                            + "\n\t|0-Volver al menu principal"
-                                            + "\n\nIngrese la opcion a realizar:");
-                        option1 = sc.nextInt();
-                        sc.nextLine();
-                        switch(option1){
-                            case 1: 
-                                //Linea 391
-                                GestionBiblioteca.nuevoLibro();
-                                break;
-                            case 2: 
-                                
-                                GestionBiblioteca.prestarLibro();
-                                break;
-                                
-                            case 3: 
-                                GestionBiblioteca.devolverLibro();                        
-                                break;
-                                
-                            case 4: 
-                                System.out.println("\f\t\t--ESPACIO 'PRESTAMOS VENCIDOS'--\n\n");
-                                
-                                if(biblioteca.getArrayLibros().size() > 0){
-                                    if(biblioteca.prestamosVencidos().size() > 0){
-                                        for(Prestamo unPres : biblioteca.prestamosVencidos()){
-                                            System.out.println("\n" + unPres.toString() + "\n");
-                                        }
-                                    }else{
-                                        System.out.println("\n--No hay prestamos vencidos actualmente!--\n");
-                                    }
-                                }else{
-                                    System.out.println("\n\n--Primero debe agregar libros (Opcion '1')!--\n\n");
-                                }
-                                
-                                break;
-                                
-                            case 5: 
-                                System.out.println("\f\t\t--ESPACIO 'QUIEN TIENE EL LIBRO'--\n\n");
-                                
-                                if(biblioteca.getArrayLibros().size() > 0){
-                                    int libroBusca2;
-                                    
-                                    System.out.println("\n\nSeleccione un libro prestado (Indice int): ");
-                                    System.out.println(biblioteca.listaDeLibros());
-                                    libroBusca2 = sc.nextInt();
-                                    sc.nextLine();
-                                
-                                    Libro libroAPrestar = biblioteca.getArrayLibros().get(libroBusca2 - 1);
-                                    
-                                    try{
-                                        System.out.println(biblioteca.quienTieneElLibro(libroAPrestar));
-                                    }catch(LibroNoPrestadoException e){
-                                        System.out.println(e);
-                                    } 
-                                }else{
-                                    System.out.println("--Primero debe agregar libros (Opcion '1')!--");
-                                }
-                                
-                                break;
-                                
-                            case 6:
-                                System.out.println("\f\t\t--ESPACIO 'LISTA DE LIBROS'--\n\n");
-                                if(biblioteca.getArrayLibros().size() > 0){
-                                    System.out.println(biblioteca.listaDeLibros());
-                                }else{
-                                    System.out.println("--Primero debe agregar libros (Opcion '1')!--");
-                                }
-                                
-                                break;
-                                
-                            case 7:
-                                System.out.println("\f\t\t--ESPACIO 'LISTA DE TITULOS'--\n\n");
-                                
-                                if(biblioteca.getArrayLibros().size() > 0){
-                                    System.out.println(biblioteca.listaDeTitulos());
-                                }else{
-                                    System.out.println("--Primero debe agregar libros (Opcion '1')!--");
-                                }
-                                
-                                break;
-                                
-                            case 8:
-                                System.out.println("\f\t\t--ESPACIO 'ELIMINAR LIBRO'--\n\n");
-            
-                                if(biblioteca.getArrayLibros().size() > 0){
-                                    int libroBusca3;
-                                    System.out.printf("\n!--ADVERTENCIA--: ESTA ACCION NO SE PUEDE REVERTIR!\n\n" 
-                                    + "Seleccione un libro a eliminar (Indice int):"); 
-                                    System.out.println(biblioteca.listaDeLibros());
-                                    libroBusca3 = sc.nextInt();
-                                    sc.nextLine();
-        
-                                    if(libroBusca3 >= 1 && libroBusca3 <= biblioteca.getArrayLibros().size()){
-                                        int indiceReal = libroBusca3 - 1; 
-                                        biblioteca.getArrayLibros().remove(indiceReal);
-            
-                                        System.out.printf("\nEl libro ha sido removido con exito!\n");
-                                    }else{
-                                        System.out.printf("\nEl indice no pertenece a ningun libro\n");
-                                    }
-                                    }else{
-                                        System.out.println("--Primero debe agregar libros (Opcion '1')--\n"); 
-                                }
-            
-                                break;
-                                default: 
-                                    break;
-                        }
-                        
+                        GestionBiblioteca.subMenuLibros();
                         break;
-                        
+
                     case 2: 
-                        int option2;
-                        System.out.println("\f\t\t--ESPACIO DE 'GESTION DE SOCIOS'--"
-                                                + "\n\n\t|1-Nuevo socio estudiante"
-                                                + "\n\t|2-Nuevo socio docente"
-                                                + "\n\t|3-Cantidad de socios por tipo"
-                                                + "\n\t|4-Lista de docentes responsables"
-                                                + "\n\t|5-Lista de socios"
-                                                + "\n\t|6-Buscar socio"
-                                                + "\n\t|7-Eliminar socio"
-                                                + "\n\t|0-Volver al menu principal"
-                                                + "\n\nIngrese la opcion a realizar:");
-                        option2 = sc.nextInt();
-                        sc.nextLine();
-                        switch(option2){
-                            case 1: 
-                                System.out.println("\f\t\t--ESPACIO DE 'INGRESO ESTUDIANTE'--\n\n");
-                                int dniSocio1;
-                                String nombre1, carrera;
-                                                                    
-                                System.out.println("Ingrese el nombre del estudiante:");
-                                nombre1 = sc.nextLine();
-                                    
-                                System.out.println("Ingrese la carrera del estudiante:");
-                                carrera = sc.nextLine();
-                                
-                                System.out.println("Ingrese el DNI del estudiante (int):");
-                                dniSocio1 = sc.nextInt();
-                                sc.nextLine();
-                                    
-                                biblioteca.nuevoSocioEstudiante(dniSocio1, nombre1, carrera);
-                                
-                                System.out.printf("\n\nEl estudiante %s fue agregado con exito!\n\n",nombre1);
-                                
-                                break;
-                                
-                           case 2: 
-                                System.out.println("\f\t\t--ESPACIO DE 'INGRESO PROFESOR'--\n\n");
-                                int dniSocio2;
-                                String nombre2, area;
-                                
-                                System.out.println("Ingrese el nombre del docente:");
-                                nombre2 = sc.nextLine();
-                                    
-                                System.out.println("Ingrese el area del docente:");
-                                area = sc.nextLine();
-                            
-                                System.out.println("Ingrese el DNI del docente (int):");
-                                dniSocio2 = sc.nextInt();
-                                sc.nextLine();
-                                
-                                biblioteca.nuevoSocioDocente(dniSocio2, nombre2, area);
-                                
-                                System.out.printf("\n\nEl docente %s fue agregado con exito!\n\n",nombre2);
-                                
-                                break;
-                                
-                           case 3: 
-                                System.out.println("\f\t\t--ESPACIO 'CONTADOR POR TIPO DE SOCIO'--\n\n");
-                                   
-                                if(biblioteca.getArraySocios().size() > 0){
-                                   String tipo;
-                                   System.out.println("Ingrese el tipo (ESTUDIANTE/DOCENTE):");
-                                   tipo = sc.nextLine();
-                                   if(tipo.equalsIgnoreCase("docente") || tipo.equalsIgnoreCase("estudiante")){
-                                       System.out.printf("\n\nLa cantidad de socios del tipo '%s' es: %d", tipo, biblioteca.cantidadSociosPorTipos(tipo));
-                                   }else{
-                                       System.out.println("\n\nNo ingreso un tipo valido!"); 
-                                   }
-                                }else{
-                                   System.out.println("--Primero debe cargar socios!(Opcion '2')--\n"); 
-                                }
-                                     
-                                break;
-                                   
-                           case 4:    
-                                System.out.println("\f\t\t--ESPACIO 'LISTADO DE DOCENTES RESPONSABLES'--\n\n");
-                                   
-                                if(biblioteca.getArraySocios().size() > 0){
-                                    System.out.printf("\t\t---Lista de Docentes Responsables:---\n\n%s", biblioteca.listaDeDocentesResponsables());
-                                }else{
-                                    System.out.println("--Primero debe cargar socios! (Opcion '2')--\n");
-                                }
-                                    
-                                break;
-                                
-                           case 5:
-                                System.out.println("\f\t\t--ESPACIO 'LISTADO DE SOCIOS'--\n\n");
-                                   
-                                if(biblioteca.getArraySocios().size() > 0){
-                                   System.out.printf("\t\t---Lista de socios:---\n\n%s", biblioteca.listaDeSocios());
-                                }else{
-                                    System.out.println("--Primero debe cargar socios! (Opcion '2')--\n");
-                                }
-                                    
-                               break;
-                                   
-                           case 6:
-                                System.out.println("\f\t\t--ESPACIO 'BUSCAR SOCIO'--\n\n");
-                                   
-                                if(biblioteca.getArraySocios().size() > 0){
-                                    int dniSocio;
-                                    System.out.printf("\nIngrese el DNI del socio a buscar (sin puntos):"); 
-                                    dniSocio = sc.nextInt();
-                                    sc.nextLine();
-                                    
-                                    Socio socioEncontrado = biblioteca.buscarSocio(dniSocio);
-                                    if(socioEncontrado != null){
-                                        System.out.printf("\nEl DNI pertenece a '%s' y es un socio de la biblioteca!\n", socioEncontrado.getNombre());
-                                    }else{
-                                        System.out.printf("\nEl DNI no pertenece a ningun socio\n");
-                                    }
-                                    }else{
-                                        System.out.println("--Primero debe cargar socios (Opcion '2')--\n");
-                                    }
-                                    
-                                break;
-                            
-                           case 7:
-                                System.out.println("\f\t\t--ESPACIO 'ELIMINAR SOCIO'--\n\n");
-                                   
-                                if(biblioteca.getArraySocios().size() > 0){
-                                    int dniSocio3;
-                                    System.out.printf("\n!--ADVERTENCIA--: ESTA ACCION NO SE PUEDE REVERTIR!\n\n" 
-                                                        + "Ingrese el DNI del socio a eliminar (sin puntos):"); 
-                                    dniSocio3 = sc.nextInt();
-                                    sc.nextLine();
-                                    
-                                    Socio socioEncontrado = biblioteca.buscarSocio(dniSocio3);
-                                    if(socioEncontrado != null){
-                                        biblioteca.getArraySocios().remove(socioEncontrado);
-                                        System.out.printf("\nEl socio ha sido removido con exito!\n");
-                                    }else{
-                                        System.out.printf("\nEl DNI no pertenece a ningun socio\n");
-                                    }
-                                    }else{
-                                        System.out.println("--Primero debe cargar socios (Opcion '2')--\n");
-                                }
-                                    
-                                break;
-                            
-                                default: 
-                                    break; 
-                            }
-                            
-                            break;
-                        case 3: 
-                            System.out.printf("\f\t\t---Gracias por haber utilizado los servicios de gestion para '%s', hasta pronto!---", nombreBiblioteca);
-                            option = 0;
-                            break;
+                        GestionBiblioteca.subMenuSocios(); 
+                        break;
+
+                    case 3: 
+                        System.out.printf("\f\t\t---Gracias por haber utilizado los servicios de gestion para '%s', hasta pronto!---", nombreBiblioteca);
+                        option = 0;
+                        break;
                 }
             }
         }else{
@@ -343,7 +83,120 @@ public class GestionBiblioteca {
         }
     }
     
-                 
+    private static void subMenuLibros(){
+        int option1;
+        System.out.println("\f\t\t--ESPACIO DE GESTION DE LIBROS--"
+                            + "\n\n\t|1-Nuevo libro"
+                            + "\n\t|2-Prestar libro"
+                            + "\n\t|3-Devolver libro"
+                            + "\n\t|4-Prestamos vencidos"
+                            + "\n\t|5-Quien tiene el libro"
+                            + "\n\t|6-Lista de libros"
+                            + "\n\t|7-Lista de titulos"
+                            + "\n\t|8-Eliminar libro"
+                            + "\n\t|0-Volver al menu principal"
+                            + "\n\nIngrese la opcion a realizar:");
+        option1 = sc.nextInt();
+        sc.nextLine();
+        switch(option1){
+            case 1: 
+                //Linea 200
+                GestionBiblioteca.nuevoLibro();
+                break;
+
+            case 2: 
+                //Linea 227 
+                GestionBiblioteca.prestarLibro();
+                break;
+
+            case 3:
+                //Linea 255
+                GestionBiblioteca.devolverLibro();                        
+                break;
+
+            case 4:
+                //Linea 278
+                GestionBiblioteca.prestamosVencidos(); 
+                break;
+
+            case 5:
+                //Linea 294
+                GestionBiblioteca.quienLoTiene();
+                break;
+
+            case 6:
+                //Linea 317
+                GestionBiblioteca.listaLibros();
+                break;
+                
+            case 7:
+                //Linea 326
+                GestionBiblioteca.listaTitulos();
+                break;
+                
+            case 8:
+                //Linea 336
+                GestionBiblioteca.eliminarLibro();
+                break;  
+            default: 
+                break;
+            }
+        }
+             
+    private static void subMenuSocios(){
+        int option2;
+        System.out.println("\f\t\t--ESPACIO DE 'GESTION DE SOCIOS'--"
+                                + "\n\n\t|1-Nuevo socio estudiante"
+                                + "\n\t|2-Nuevo socio docente"
+                                + "\n\t|3-Cantidad de socios por tipo"
+                                + "\n\t|4-Lista de docentes responsables"
+                                + "\n\t|5-Lista de socios"
+                                + "\n\t|6-Buscar socio"
+                                + "\n\t|7-Eliminar socio"
+                                + "\n\t|0-Volver al menu principal"
+                                + "\n\nIngrese la opcion a realizar:");
+        option2 = sc.nextInt();
+        sc.nextLine();
+        switch(option2){
+            case 1: 
+                //Linea 360
+                GestionBiblioteca.nuevoSocioEstudiante();
+                break;
+                
+            case 2: 
+                //Linea 385
+                GestionBiblioteca.nuevoSocioDocente();
+                break;
+                
+            case 3: 
+                //Linea 410
+                GestionBiblioteca.cantidadSociosPorTipo();       
+                break;
+                    
+            case 4: 
+                //Linea 423
+                GestionBiblioteca.listaDocentesResponsables();  
+                break;
+                
+            case 5:
+                //Linea 433
+                GestionBiblioteca.listaSocios();
+                break;
+                    
+            case 6:
+                //Linea 443
+                GestionBiblioteca.buscarSocio();
+                break;
+            case 7:
+                //Linea 465
+                GestionBiblioteca.eliminarSocio(); 
+                break;
+            
+            default: 
+                break; 
+            }
+    }          
+
     private static void nuevoLibro(){
         System.out.println("\f\t\t--ESPACIO 'NUEVO LIBRO'--\n\n");
                                 
@@ -422,13 +275,213 @@ public class GestionBiblioteca {
         }
     }
         
-    private static void prestamosVencidos(){}
-    private static void quienLoTiene(){}
-    private static void listaLibros(){}
-    private static void listaTitulos(){}
-    private static void eliminarLibro(){}
+    private static void prestamosVencidos(){
+        System.out.println("\f\t\t--ESPACIO 'PRESTAMOS VENCIDOS'--\n\n");
+                                
+        if(biblioteca.getArrayLibros().size() > 0){
+            if(biblioteca.prestamosVencidos().size() > 0){
+                for(Prestamo unPres : biblioteca.prestamosVencidos()){
+                    System.out.println("\n" + unPres.toString() + "\n");
+                }
+            }else{
+                System.out.println("\n--No hay prestamos vencidos actualmente!--\n");
+            }
+        }else{
+            System.out.println("\n\n--Primero debe agregar libros (Opcion '1')!--\n\n");
+        }   
+    }
     
+    private static void quienLoTiene(){
+        System.out.println("\f\t\t--ESPACIO 'QUIEN TIENE EL LIBRO'--\n\n");
+                                
+        if(biblioteca.getArrayLibros().size() > 0){
+            int libroBusca2;
+                                        
+            System.out.println("\n\nSeleccione un libro prestado (Indice int): ");
+            System.out.println(biblioteca.listaDeLibros());
+            libroBusca2 = sc.nextInt();
+            sc.nextLine();
+                                    
+            Libro libroAPrestar = biblioteca.getArrayLibros().get(libroBusca2 - 1);
+                        
+            try{
+                System.out.println(biblioteca.quienTieneElLibro(libroAPrestar));
+            }catch(LibroNoPrestadoException e){
+                System.out.println(e);
+            } 
+        }else{
+            System.out.println("--Primero debe agregar libros (Opcion '1')!--");
+        }                      
+    }
+
+    private static void listaLibros(){
+        System.out.println("\f\t\t--ESPACIO 'LISTA DE LIBROS'--\n\n");
+        if(biblioteca.getArrayLibros().size() > 0){
+            System.out.println(biblioteca.listaDeLibros());
+        }else{
+            System.out.println("--Primero debe agregar libros (Opcion '1')!--");
+        }           
+    }
+
+    private static void listaTitulos(){
+        System.out.println("\f\t\t--ESPACIO 'LISTA DE TITULOS'--\n\n");
+                                
+        if(biblioteca.getArrayLibros().size() > 0){
+            System.out.println(biblioteca.listaDeTitulos());
+        }else{
+            System.out.println("--Primero debe agregar libros (Opcion '1')!--");
+        }                     
+    }
+
+    private static void eliminarLibro(){
+        System.out.println("\f\t\t--ESPACIO 'ELIMINAR LIBRO'--\n\n");
+            
+        if(biblioteca.getArrayLibros().size() > 0){
+            int libroBusca3;
+            System.out.printf("\n!--ADVERTENCIA--: ESTA ACCION NO SE PUEDE REVERTIR!\n\n" 
+            + "Seleccione un libro a eliminar (Indice int):"); 
+            System.out.println(biblioteca.listaDeLibros());
+            libroBusca3 = sc.nextInt();
+            sc.nextLine();
+
+            if(libroBusca3 >= 1 && libroBusca3 <= biblioteca.getArrayLibros().size()){
+                int indiceReal = libroBusca3 - 1; 
+                biblioteca.getArrayLibros().remove(indiceReal);
+
+                System.out.printf("\nEl libro ha sido removido con exito!\n");
+            }else{
+                System.out.printf("\nEl indice no pertenece a ningun libro\n");
+            }
+            }else{
+                System.out.println("--Primero debe agregar libros (Opcion '1')--\n"); 
+        }    
+    }
+
+    private static void nuevoSocioEstudiante(){
+        System.out.println("\f\t\t--ESPACIO DE 'INGRESO ESTUDIANTE'--\n\n");
+                                
+        int dniSocio1, anioCursado;
+        String nombre1, carrera;
+                                
+        System.out.println("Ingrese el nombre del estudiante:");
+        nombre1 = sc.nextLine();
+                                    
+        System.out.println("Ingrese la carrera del estudiante:");
+        carrera = sc.nextLine();
+                                    
+        System.out.println("Ingrese el año de cursado del estudiante (int):");
+        anioCursado = sc.nextInt();
+        sc.nextLine();
+                                    
+        System.out.println("Ingrese el DNI del estudiante (int):");
+        dniSocio1 = sc.nextInt();
+        sc.nextLine();
+                                    
+        biblioteca.nuevoSocioEstudiante(dniSocio1, nombre1, carrera, anioCursado);
+                                    
+        System.out.printf("\n\nEl estudiante %s fue agregado con exito!\n\n",nombre1);
+    }
+
+    private static void nuevoSocioDocente(){
+        System.out.println("\f\t\t--ESPACIO DE 'INGRESO PROFESOR'--\n\n");
+                int dniSocio2;
+                String nombre2, area;
+                
+                System.out.println("Ingrese el nombre del docente:");
+                nombre2 = sc.nextLine();
+                    
+                System.out.println("Ingrese el area del docente:");
+                area = sc.nextLine();
+            
+                System.out.println("Ingrese el DNI del docente (int):");
+                dniSocio2 = sc.nextInt();
+                sc.nextLine();
+                
+                biblioteca.nuevoSocioDocente(dniSocio2, nombre2, area);
+                
+                System.out.printf("\n\nEl docente %s fue agregado con exito!\n\n",nombre2);
+                
+    }
+
+    private static void cantidadSociosPorTipo(){
+        System.out.println("\f\t\t--ESPACIO 'CONTADOR POR TIPO DE SOCIO'--\n\n");
+                    
+                if(biblioteca.getArraySocios().size() > 0){
+                    String tipo;
+                    System.out.println("Ingrese el tipo (ESTUDIANTE/DOCENTE):");
+                    tipo = sc.nextLine();
+                    if(tipo.equalsIgnoreCase("docente") || tipo.equalsIgnoreCase("estudiante")){
+                        System.out.printf("\n\nLa cantidad de socios del tipo '%s' es: %d", tipo, biblioteca.cantidadSociosPorTipos(tipo));
+                    }else{
+                        System.out.println("\n\nNo ingreso un tipo valido!"); 
+                    }
+                }else{
+                    System.out.println("--Primero debe cargar socios!(Opcion '2')--\n"); 
+                }
+    }
     
+    private static void listaDocentesResponsables(){
+        System.out.println("\f\t\t--ESPACIO 'LISTA DE DOCENTES RESPONSABLES'--\n\n");
+                                
+        if(biblioteca.getArraySocios().size() > 0){
+            System.out.println(biblioteca.listaDocentesResponsables());
+        }else{
+            System.out.println("--Primero debe cargar socios!(Opcion '2')--\n"); 
+        }                     
+    }
     
-    
+    private static void listaSocios(){
+        System.out.println("\f\t\t--ESPACIO 'LISTA DE SOCIOS'--\n\n");
+                                
+        if(biblioteca.getArraySocios().size() > 0){
+            System.out.println(biblioteca.listaDeSocios());
+        }else{
+            System.out.println("--Primero debe cargar socios!(Opcion '2')--\n"); 
+        }                     
+    }
+
+    private static void buscarSocio(){
+        System.out.println("\f\t\t--ESPACIO 'BUSCAR SOCIO'--\n\n");
+                                
+        if(biblioteca.getArraySocios().size() > 0){
+            int dniBusca;
+                                        
+            System.out.println("Ingrese el DNI del socio a buscar:");
+            dniBusca = sc.nextInt();
+            sc.nextLine();
+                                    
+            Socio socioBuscado = biblioteca.buscarSocio(dniBusca);
+                                    
+            if(socioBuscado != null){
+                System.out.println("\n\n--Socio encontrado--\n\n" + socioBuscado.toString() + "\n\n");
+            }else{
+                System.out.println("\n\n--No se encontro ningun socio con ese DNI--\n\n");
+            }
+        }else{
+            System.out.println("--Primero debe cargar socios!(Opcion '2')--\n"); 
+        }                     
+    }
+
+    private static void eliminarSocio(){
+        System.out.println("\f\t\t--ESPACIO 'ELIMINAR SOCIO'--\n\n");
+                                
+        if(biblioteca.getArraySocios().size() > 0){
+            int dniEliminar;
+                                        
+            System.out.println("Ingrese el DNI del socio a eliminar:");
+            dniEliminar = sc.nextInt();
+            sc.nextLine();
+                                    
+            Socio socioAEliminar = biblioteca.buscarSocio(dniEliminar);
+                                    
+            if(socioAEliminar != null){
+                biblioteca.getArraySocios().remove(socioAEliminar);
+                System.out.println("\n\n--El socio ha sido eliminado con exito!--\n\n");
+            }else{
+                System.out.println("\n\n--No se encontro ningun socio con ese DNI--\n\n");
+            }
+        }else{
+            System.out.println("--Primero debe cargar socios!(Opcion '2')--\n"); 
+        }                     
+    }
 }
