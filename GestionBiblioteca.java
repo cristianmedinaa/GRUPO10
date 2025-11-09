@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-
+//Prueba
 /**
  * Clase principal que gestiona la Biblioteca, ejecuta los informes
  * y maneja la persistencia de datos usando archivos secuenciales.
