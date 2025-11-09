@@ -1,11 +1,12 @@
 import java.util.*;
+import java.io.*;
 /**
  * Clase abstracta que contiene el dni, nombre y arrayList de prestamos de un determinado socio..
  * 
  * @author Pannunzio Nicolas
  * @version 06/11/2025
  */
-public abstract class Socio
+public abstract class Socio implements Serializable
 {
     //Variables de instancia.
     private int dniSocio;

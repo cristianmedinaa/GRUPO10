@@ -1,5 +1,5 @@
 import java.util.*;
-
+import java.io.*;
 /**
  * Libro reune los datos principales de cada libro, permite informar si esta prestado
  * y cuando fue su ultimo prestamo.
@@ -7,7 +7,7 @@ import java.util.*;
  * @author Vallejos Nataniel
  * @version 31/10/2025
  */
-public class Libro{
+public class Libro implements Serializable{
     //Variables de instancia
     private String titulo;
     private int edicion;

@@ -12,9 +12,7 @@ import java.util.*;
 public class GestionBiblioteca {
     private static Scanner sc = new Scanner(System.in);
     private static  Biblioteca biblioteca;
-
-    
-    
+      
     public static void main(String[] args) {
         sc.useDelimiter("\n");
         int option = 1;
@@ -29,7 +27,7 @@ public class GestionBiblioteca {
         usuario = sc.nextLine();
         System.out.println("Ingrese la contraseña: ");
         contrasenia = sc.nextLine();
-        
+        GestionBiblioteca.cargarDatos();
         
         //Ventana menu para gestionar socios si el usuario es correcto
         if(usuario.equals("admin") && contrasenia.equals("1234")){
@@ -48,6 +46,8 @@ public class GestionBiblioteca {
                     Thread.sleep(1000);
                 } catch (InterruptedException e){
                     e.printStackTrace();
+                }finally{
+                    GestionBiblioteca.guardarDatos();
                 }
                 System.out.println("\f");
                 
@@ -82,7 +82,27 @@ public class GestionBiblioteca {
             System.out.println("El usuario o contraseña no son correctos");//deberia llamar nuevamente al menu de login para poder volver a ingresar el usuario y nombre
         }
     }
-    
+    private static void cargarDatos() {
+        try{
+            ObjectInputStream datos = new ObjectInputStream(new FileInputStream("datosBiblioteca.dat")); 
+            biblioteca.cargarSocios((ArrayList<Socio>) datos.readObject() );
+            biblioteca.cargarLibros((ArrayList<Libro>) datos.readObject() );
+            System.out.println("Datos cargados correctamente.");
+        } catch (Exception e) {
+            System.out.println("No se pudo cargar archivo, listas vacías.");
+        }
+    }
+
+    private static void guardarDatos() {
+        try{
+            ObjectOutputStream datos = new ObjectOutputStream(new FileOutputStream("datosBiblioteca.dat"));
+            datos.writeObject(biblioteca.getArraySocios());
+            datos.writeObject(biblioteca.getArrayLibros());
+            System.out.println("Datos guardados correctamente.");
+        } catch (IOException e) {
+            System.out.println("Error al guardar archivo.");
+        }
+    }
     private static void subMenuLibros(){
         int option1;
         System.out.println("\f\t\t--ESPACIO DE GESTION DE LIBROS--"
@@ -368,16 +388,12 @@ public class GestionBiblioteca {
                                     
         System.out.println("Ingrese la carrera del estudiante:");
         carrera = sc.nextLine();
-                                    
-        System.out.println("Ingrese el año de cursado del estudiante (int):");
-        anioCursado = sc.nextInt();
-        sc.nextLine();
-                                    
+                                                                        
         System.out.println("Ingrese el DNI del estudiante (int):");
         dniSocio1 = sc.nextInt();
         sc.nextLine();
                                     
-        biblioteca.nuevoSocioEstudiante(dniSocio1, nombre1, carrera, anioCursado);
+        biblioteca.nuevoSocioEstudiante(dniSocio1, nombre1, carrera);
                                     
         System.out.printf("\n\nEl estudiante %s fue agregado con exito!\n\n",nombre1);
     }
@@ -424,7 +440,7 @@ public class GestionBiblioteca {
         System.out.println("\f\t\t--ESPACIO 'LISTA DE DOCENTES RESPONSABLES'--\n\n");
                                 
         if(biblioteca.getArraySocios().size() > 0){
-            System.out.println(biblioteca.listaDocentesResponsables());
+            System.out.println(biblioteca.listaDeDocentesResponsables());
         }else{
             System.out.println("--Primero debe cargar socios!(Opcion '2')--\n"); 
         }                     

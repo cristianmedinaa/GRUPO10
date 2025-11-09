@@ -50,6 +50,9 @@ public class Biblioteca{
     private void setArrayLibros(ArrayList <Libro> p_libros){
         this.libros = p_libros;
     }
+    public void cargarLibros(ArrayList <Libro> p_libros){
+        this.libros = p_libros;
+    }
 
     /**
      * Set para la coleccion de socios
@@ -57,6 +60,9 @@ public class Biblioteca{
      * @return no retorna nada
      */
     private void setArraySocios(ArrayList <Socio> p_socios){
+        this.socios = p_socios;
+    }
+    public void cargarSocios(ArrayList <Socio> p_socios){
         this.socios = p_socios;
     }
     
