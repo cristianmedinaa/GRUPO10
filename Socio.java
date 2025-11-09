@@ -14,7 +14,7 @@ public abstract class Socio
     private ArrayList<Prestamo> prestamos;
     
     /**
-     * Constructor caso 0.
+     * Constructor caso 0 Prestamos.
      */
     public Socio(int p_dniSocio, String p_nombre, int p_diasPrestamo){
         this.setDniSocio(p_dniSocio);
@@ -22,18 +22,9 @@ public abstract class Socio
         this.setDiasPrestamo(p_diasPrestamo);
         this.setPrestamos(new ArrayList());
     }
+    
     /**
-     * Constructor caso 1.
-     */
-    public Socio(int p_dniSocio, String p_nombre, int p_diasPrestamo, Prestamo p_prestamo){
-        this.setDniSocio(p_dniSocio);
-        this.setNombre(p_nombre);
-        this.setDiasPrestamo(p_diasPrestamo);
-        this.setPrestamos(new ArrayList());
-        this.agregarPrestamo(p_prestamo);
-    }
-    /**
-     * Constructor caso *.
+     * Constructor caso * Prestamos.
      */
     public Socio(int p_dniSocio, String p_nombre, int p_diasPrestamo, ArrayList<Prestamo> p_prestamos){
         this.setDniSocio(p_dniSocio);
@@ -42,6 +33,16 @@ public abstract class Socio
         this.setPrestamos(p_prestamos);
     }
     
+    /**
+     * Constructor caso 1 Prestamo.
+     */
+    public Socio(int p_dniSocio, String p_nombre, int p_diasPrestamo, Prestamo p_prestamo){
+        this.setDniSocio(p_dniSocio);
+        this.setNombre(p_nombre);
+        this.setDiasPrestamo(p_diasPrestamo);
+        this.setPrestamos(new ArrayList<Prestamo>());
+        this.agregarPrestamo(p_prestamo);
+    }
     //Setters -----------------------------------
     private void setDniSocio(int p_dniSocio){
         this.dniSocio = p_dniSocio;
@@ -79,6 +80,7 @@ public abstract class Socio
     public boolean agregarPrestamo(Prestamo p_prestamo){
         return this.getPrestamos().add(p_prestamo);
     }
+    
     /**
      * Permite quitar un determinado prestamo del ArrayList.
      * @Prestamo que se desea remover.
@@ -87,6 +89,7 @@ public abstract class Socio
     public boolean quitarPrestamo(Prestamo p_prestamo){
         return this.getPrestamos().remove(p_prestamo);
     }
+    
     /**
      * Devuelve la cantidad de prestamos actuales del socio.
      * @return un int = getPrestamos().size()
@@ -94,6 +97,7 @@ public abstract class Socio
     public int cantLibrosPrestados(){
         return this.getPrestamos().size();
     }
+    
     /**
      * Devuelve un string con DNI, Nombre, Clase y cantLibrosPrestados.
      * @return un string con DNI, Nombre, Clase y cantLibrosPrestados.
@@ -103,6 +107,7 @@ public abstract class Socio
                 " ("+ this.soyDeLaClase() + ") || Libros Prestados: "
                 + this.cantLibrosPrestados() +"\n");
     }
+    
     /**
      * Instancia uns variable temporal Calendar con la fecha actual para verificar, 
      * mediante un Foreach si hay algun prestamo vencido.

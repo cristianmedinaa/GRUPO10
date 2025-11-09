@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=GestionBiblioteca
+comment0.text=\r\n\ Clase\ principal\ que\ gestiona\ la\ Biblioteca,\ ejecuta\ los\ informes\r\n\ y\ maneja\ la\ persistencia\ de\ datos\ usando\ archivos\ secuenciales.\r\n\ \r\n\r\n\ @author\ (Medina\ Cristian,\ Nataniel\ Vallejos,Pannunzio\ Nicolas,\ Ramirez\ Emiliano,\ Ramiro\ Nu\u00F1ez,Quintana\ Antonio)\r\n\ @version\ 07/11/2025\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=
+comment2.target=void\ nuevoLibro()
+comment3.params=
+comment3.target=void\ prestarLibro()
+comment4.params=
+comment4.target=void\ devolverLibro()
+comment5.params=
+comment5.target=void\ prestamosVencidos()
+comment6.params=
+comment6.target=void\ quienLoTiene()
+comment7.params=
+comment7.target=void\ listaLibros()
+comment8.params=
+comment8.target=void\ listaTitulos()
+comment9.params=
+comment9.target=void\ eliminarLibro()
+numComments=10

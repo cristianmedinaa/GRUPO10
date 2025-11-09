@@ -1,12 +1,11 @@
 import java.util.*;
 
 /**
- * Clase Libro
- * Esta clase posee los atributos de un libro y sus prestamos.
- * Permite informar si el libro fue prestado o no, junto con su ultimo libro y también su el titulo.
+ * Libro reune los datos principales de cada libro, permite informar si esta prestado
+ * y cuando fue su ultimo prestamo.
  * 
- * @author Vallejos Nátaniel
- * @version 05-10-2025
+ * @author Vallejos Nataniel
+ * @version 31/10/2025
  */
 public class Libro{
     //Variables de instancia
@@ -17,11 +16,7 @@ public class Libro{
     private ArrayList <Prestamo> prestamos;
     
     /**
-     * Contructor de un Libro caso 0.
-     * @param String p_titulo Titulo del Libro.
-     * @param int p_edicion Numero de edicion del Libro.
-     * @param String p_editorial Nombre de la editorial del Libro.
-     * @param int p_anio Año en el que se publicó el Libro.
+     * Contrsuctor caso 0.
      */
     public Libro(String p_titulo, int p_edicion, String p_editorial, int p_anio){
         this.setTitulo(p_titulo);
@@ -32,12 +27,7 @@ public class Libro{
     }
     
     /**
-     * Constructor de un libro caso *.
-     * @param String p_titulo Titulo del Libro.
-     * @param int p_edicion Numero de edicion del Libro.
-     * @param String p_editorial Nombre de la editorial del Libro.
-     * @param int p_anio Año en el que se publicó el Libro.
-     * @param ArrayList<Prestamo> p_prestamos Lista de Libros.
+     * Constructor caso *.
      */
     public Libro(String p_titulo, int p_edicion, String p_editorial, int p_anio, ArrayList <Prestamo> p_prestamos){
         this.setTitulo(p_titulo);
@@ -47,7 +37,8 @@ public class Libro{
         this.setPrestamos(p_prestamos);
     }
     
-    //Setters 
+    
+    //Setters -------------------------------------------------------------------------------------------------------------
     private void setTitulo(String p_titulo){
         this.titulo = p_titulo;
     }
@@ -65,7 +56,7 @@ public class Libro{
     }
     
     
-    //Getters 
+    //Getters --------------------------------------------------------------------------------------------------------------
     public String getTitulo(){
         return this.titulo;
     }
@@ -83,7 +74,7 @@ public class Libro{
     }
     
     
-    //Agregar y Quitar del ArrayList
+    //Metodos Agregar y Quitar del ArrayList --------------------------------------------------------------------------------
     /**
      * Permite agregar un Prestamo al ArrayList prestamos.
      * @param prestamo que sera agregado al ArrayList.
@@ -99,45 +90,42 @@ public class Libro{
      * @return True si fue quitado, False si no.
      */
     public boolean quitarPrestamo(Prestamo p_prestamo){
-        if(this.getPrestamos().isEmpty()){
-            System.out.println("No hay más prestamos por quitar");
-            return false;
-        }else{
-            return this.getPrestamos().remove(p_prestamo);   
-        }
+        return this.getPrestamos().remove(p_prestamo);
     }
     
-    //Metodos restantes
+    
+    //Otros Metodos ---------------------------------------------------------------------------------------------------------
     /**
-     * Devuelve el ultimo prestamo verificando con fechaDevolucion.
+     * Si la fechaDevolucion del ultimo prestamo es igual a null, devuelve true.
+     * 
      * @return true si el libro se encuentra prestado.
      */
     public boolean prestado(){
-        if(this.ultimoPrestamo().getFechaDevolucion() == null){
-            return true;
-        }else{
+        Prestamo ultimo = this.ultimoPrestamo();
+        if(ultimo == null){ // Si no hay préstamos, no está prestado
             return false;
         }
+        return (ultimo.getFechaDevolucion() == null);
     }
     
     /**
      * Devuelve el ultimo Prestamo del ArrayList.
-     * Utiliza el metodo get(size()-1),
+     * Utiliza el metodo .get( .size() - 1 ).
      * 
      * @return ultimo Prestamo del ArrayList.
      */
     public Prestamo ultimoPrestamo(){
-        if (this.prestamos.isEmpty()) {
-            return null;
+        if(this.getPrestamos().isEmpty()){ // Comprobar si está vacío
+            return null; 
         }
+        
         return this.getPrestamos().get(this.getPrestamos().size() - 1);
     }
     
     /**
-     * Devuelve el siguiente String con: "Titulo: <ejemplo de titulo>"
+     * Devuelve el siguiente String: Titulo: <<titulo>> 
      * @return String con el titulo del libro.
      */
-    @Override
     public String toString(){
         return "Titulo: "+ this.getTitulo();
     }

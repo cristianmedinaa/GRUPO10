@@ -21,6 +21,7 @@ public class Docente extends Socio{
         super(p_dniSocio, p_nombre, p_diasPrestamo);
         this.setArea(p_area);
     }
+    
     /**
      * Constructor de la clase Docente que recibe un prestamo por parametro
      * 
@@ -34,6 +35,7 @@ public class Docente extends Socio{
         super(p_dniSocio, p_nombre, p_diasPrestamo, p_prestamo);
         this.setArea(p_area);
     }
+    
     /**
      * Constructor de la clase Docente que recibe un ArrayList de prestamos por parametro
      * 
@@ -66,14 +68,19 @@ public class Docente extends Socio{
      */
     public boolean esResponsable(){
         boolean flag = true;
-        if( ! this.puedePedir() ) return false;
+        if( ! this.puedePedir() ){
+            return false;
+        }        
         
         for(Prestamo unPre : this.getPrestamos()){
-            if( unPre.getFechaDevolucion() != null && unPre.vencido(unPre.getFechaDevolucion())) flag = false;
+            if( unPre.getFechaDevolucion() != null && unPre.vencido(unPre.getFechaDevolucion())){
+                flag = false;
+            }
             //cambia la bandera si entregó algun libro luego del vencimiento.
         }
         return flag;
     }
+    
     /**
      * Cambiar dias de prestamo, permite asignarle más dias de prestamos al docente dependiendo si es resposable
      * o no, agregando los dias que recibe por parametro a la cantidad de dias que ya posee que por defecto son 5
@@ -87,8 +94,8 @@ public class Docente extends Socio{
         }else{
             System.out.println("No se pueden agregar días porque no es responsable");
         }
-        
     }
+    
     /**
      * Retorna un String con el nombre de la clase o tipo de socio
      * 
@@ -97,6 +104,4 @@ public class Docente extends Socio{
     public String soyDeLaClase(){
         return "Docente";
     }
-    
-       
 }

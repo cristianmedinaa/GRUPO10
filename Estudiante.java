@@ -21,6 +21,7 @@ public class Estudiante extends Socio{
         super(p_dniSocio, p_nombre, p_diasPrestamo);
         this.setCarrera(p_carrera);
     }
+    
     /**
      * Constructor de la clase Estudiante que recibe un solo prestamo por paramatro
      * 
@@ -34,6 +35,7 @@ public class Estudiante extends Socio{
         super(p_dniSocio, p_nombre, p_diasPrestamo, p_prestamo);
         this.setCarrera(p_carrera);
     }
+    
     /**
      * Constructor de la clase Estudiante que recibe un arrayList de prestamos
      * 
@@ -64,10 +66,14 @@ public class Estudiante extends Socio{
      */
     public boolean puedePedir(){
         int librosSinDevolver = 0;
-        if(!super.puedePedir()) return false; //si poseee algun prestamo vencido ya retorna null y sale
+        if(!super.puedePedir()){
+            return false; 
+        }//si poseee algun prestamo vencido ya retorna null y sale
         
         for(Prestamo unPre : this.getPrestamos()){
-            if(unPre.getFechaDevolucion() == null) librosSinDevolver++;
+            if(unPre.getFechaDevolucion() == null){
+                librosSinDevolver++;
+            }
         }//por cada prestamo pregunta si la fecha de devolucion es null, es decir que no lo devolvió aun, y lo cuenta como libro sin devolver
         
         if(librosSinDevolver <= 3){
@@ -76,6 +82,7 @@ public class Estudiante extends Socio{
             return false;
         }
     }
+    
     /**
      * Retorna un String con el nombre de la clase o tipo de socio
      * 
