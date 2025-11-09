@@ -91,23 +91,7 @@ public class GestionBiblioteca {
                                 break;
                                 
                             case 3: 
-                                System.out.println("\f\t\t--ESPACIO 'DEVOLVER LIBRO'--\n\n");
-                                
-                                if(biblioteca.getArrayLibros().size() > 0){
-                                    int libroBusca2;
-                                    
-                                    System.out.println("\n\nSeleccione un libro prestado (Indice int): ");
-                                    System.out.println(biblioteca.listaDeLibros());
-                                    libroBusca2 = sc.nextInt();
-                                    sc.nextLine();
-                                
-                                    Libro libroPrestado = biblioteca.getArrayLibros().get(libroBusca2 - 1);
-                                    try{
-                                        biblioteca.devolverLibro(libroPrestado);
-                                        System.out.println("\n\n--El libro a sido devuelto con exito!--\n\n");
-                                    }catch(LibroNoPrestadoException e){
-                                        System.out.println(e);
-                                    }                                                                       
+                                GestionBiblioteca.devolverLibro();                        
                                 }else{
                                     System.out.println("--Primero debe agregar libros (Opcion '1')!--");
                                 }
@@ -418,7 +402,26 @@ public class GestionBiblioteca {
                                     System.out.println("--Primero debe agregar libros (Opcion '1')!--");
                                 }
     }
-    private static void devolverLibro(){}
+    private static void devolverLibro(){
+        System.out.println("\f\t\t--ESPACIO 'DEVOLVER LIBRO'--\n\n");
+                                
+        if(biblioteca.getArrayLibros().size() > 0){
+            int libroBusca2;
+                                    
+            System.out.println("\n\nSeleccione un libro prestado (Indice int): ");
+            System.out.println(biblioteca.listaDeLibros());
+            libroBusca2 = sc.nextInt();
+            sc.nextLine();
+                                
+            Libro libroPrestado = biblioteca.getArrayLibros().get(libroBusca2 - 1);
+            try{
+                biblioteca.devolverLibro(libroPrestado);
+                System.out.println("\n\n--El libro a sido devuelto con exito!--\n\n");
+            }catch(LibroNoPrestadoException e){
+                System.out.println(e);
+            }                                               
+    }
+        
     private static void prestamosVencidos(){}
     private static void quienLoTiene(){}
     private static void listaLibros(){}
