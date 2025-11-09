@@ -66,144 +66,7 @@ public class GestionBiblioteca {
                 //Switch que despliega dentro suyo un manojo de opciones para gestionar libros o socios
                 switch(option){
                     case 1: 
-                        int option1;
-                        System.out.println("\f\t\t--ESPACIO DE GESTION DE LIBROS--"
-                                            + "\n\n\t|1-Nuevo libro"
-                                            + "\n\t|2-Prestar libro"
-                                            + "\n\t|3-Devolver libro"
-                                            + "\n\t|4-Prestamos vencidos"
-                                            + "\n\t|5-Quien tiene el libro"
-                                            + "\n\t|6-Lista de libros"
-                                            + "\n\t|7-Lista de titulos"
-                                            + "\n\t|8-Eliminar libro"
-                                            + "\n\t|0-Volver al menu principal"
-                                            + "\n\nIngrese la opcion a realizar:");
-                        option1 = sc.nextInt();
-                        sc.nextLine();
-                        switch(option1){
-                            case 1: 
-                                //Linea 391
-                                GestionBiblioteca.nuevoLibro();
-                                break;
-                            case 2: 
-                                
-                                GestionBiblioteca.prestarLibro();
-                                break;
-                                
-                            case 3: 
-                                System.out.println("\f\t\t--ESPACIO 'DEVOLVER LIBRO'--\n\n");
-                                
-                                if(biblioteca.getArrayLibros().size() > 0){
-                                    int libroBusca2;
-                                    
-                                    System.out.println("\n\nSeleccione un libro prestado (Indice int): ");
-                                    System.out.println(biblioteca.listaDeLibros());
-                                    libroBusca2 = sc.nextInt();
-                                    sc.nextLine();
-                                
-                                    Libro libroPrestado = biblioteca.getArrayLibros().get(libroBusca2 - 1);
-                                    try{
-                                        biblioteca.devolverLibro(libroPrestado);
-                                        System.out.println("\n\n--El libro a sido devuelto con exito!--\n\n");
-                                    }catch(LibroNoPrestadoException e){
-                                        System.out.println(e);
-                                    }                                                                       
-                                }else{
-                                    System.out.println("--Primero debe agregar libros (Opcion '1')!--");
-                                }
-                                
-                                break;
-                                
-                            case 4: 
-                                System.out.println("\f\t\t--ESPACIO 'PRESTAMOS VENCIDOS'--\n\n");
-                                
-                                if(biblioteca.getArrayLibros().size() > 0){
-                                    if(biblioteca.prestamosVencidos().size() > 0){
-                                        for(Prestamo unPres : biblioteca.prestamosVencidos()){
-                                            System.out.println("\n" + unPres.toString() + "\n");
-                                        }
-                                    }else{
-                                        System.out.println("\n--No hay prestamos vencidos actualmente!--\n");
-                                    }
-                                }else{
-                                    System.out.println("\n\n--Primero debe agregar libros (Opcion '1')!--\n\n");
-                                }
-                                
-                                break;
-                                
-                            case 5: 
-                                System.out.println("\f\t\t--ESPACIO 'QUIEN TIENE EL LIBRO'--\n\n");
-                                
-                                if(biblioteca.getArrayLibros().size() > 0){
-                                    int libroBusca2;
-                                    
-                                    System.out.println("\n\nSeleccione un libro prestado (Indice int): ");
-                                    System.out.println(biblioteca.listaDeLibros());
-                                    libroBusca2 = sc.nextInt();
-                                    sc.nextLine();
-                                
-                                    Libro libroAPrestar = biblioteca.getArrayLibros().get(libroBusca2 - 1);
-                                    
-                                    try{
-                                        System.out.println(biblioteca.quienTieneElLibro(libroAPrestar));
-                                    }catch(LibroNoPrestadoException e){
-                                        System.out.println(e);
-                                    } 
-                                }else{
-                                    System.out.println("--Primero debe agregar libros (Opcion '1')!--");
-                                }
-                                
-                                break;
-                                
-                            case 6:
-                                System.out.println("\f\t\t--ESPACIO 'LISTA DE LIBROS'--\n\n");
-                                if(biblioteca.getArrayLibros().size() > 0){
-                                    System.out.println(biblioteca.listaDeLibros());
-                                }else{
-                                    System.out.println("--Primero debe agregar libros (Opcion '1')!--");
-                                }
-                                
-                                break;
-                                
-                            case 7:
-                                System.out.println("\f\t\t--ESPACIO 'LISTA DE TITULOS'--\n\n");
-                                
-                                if(biblioteca.getArrayLibros().size() > 0){
-                                    System.out.println(biblioteca.listaDeTitulos());
-                                }else{
-                                    System.out.println("--Primero debe agregar libros (Opcion '1')!--");
-                                }
-                                
-                                break;
-                                
-                            case 8:
-                                System.out.println("\f\t\t--ESPACIO 'ELIMINAR LIBRO'--\n\n");
-            
-                                if(biblioteca.getArrayLibros().size() > 0){
-                                    int libroBusca3;
-                                    System.out.printf("\n!--ADVERTENCIA--: ESTA ACCION NO SE PUEDE REVERTIR!\n\n" 
-                                    + "Seleccione un libro a eliminar (Indice int):"); 
-                                    System.out.println(biblioteca.listaDeLibros());
-                                    libroBusca3 = sc.nextInt();
-                                    sc.nextLine();
-        
-                                    if(libroBusca3 >= 1 && libroBusca3 <= biblioteca.getArrayLibros().size()){
-                                        int indiceReal = libroBusca3 - 1; 
-                                        biblioteca.getArrayLibros().remove(indiceReal);
-            
-                                        System.out.printf("\nEl libro ha sido removido con exito!\n");
-                                    }else{
-                                        System.out.printf("\nEl indice no pertenece a ningun libro\n");
-                                    }
-                                    }else{
-                                        System.out.println("--Primero debe agregar libros (Opcion '1')--\n"); 
-                                }
-            
-                                break;
-                                default: 
-                                    break;
-                        }
-                        
+                        GestionBiblioteca.gestionLibros();
                         break;
                         
                     case 2: 
@@ -363,7 +226,147 @@ public class GestionBiblioteca {
         }
     }
     
-                 
+    private static void gestionLibros(){
+        int option1;
+        System.out.println("\f\t\t--ESPACIO DE GESTION DE LIBROS--"
+                            + "\n\n\t|1-Nuevo libro"
+                            + "\n\t|2-Prestar libro"
+                            + "\n\t|3-Devolver libro"
+                            + "\n\t|4-Prestamos vencidos"
+                            + "\n\t|5-Quien tiene el libro"
+                            + "\n\t|6-Lista de libros"
+                            + "\n\t|7-Lista de titulos"
+                            + "\n\t|8-Eliminar libro"
+                            + "\n\t|0-Volver al menu principal"
+                            + "\n\nIngrese la opcion a realizar:");
+        option1 = sc.nextInt();
+        sc.nextLine();
+        switch(option1){
+            case 1: 
+                //Linea 391
+                GestionBiblioteca.nuevoLibro();
+                break;
+            case 2: 
+                
+                GestionBiblioteca.prestarLibro();
+                break;
+                
+            case 3: 
+                System.out.println("\f\t\t--ESPACIO 'DEVOLVER LIBRO'--\n\n");
+                
+                if(biblioteca.getArrayLibros().size() > 0){
+                    int libroBusca2;
+                    
+                    System.out.println("\n\nSeleccione un libro prestado (Indice int): ");
+                    System.out.println(biblioteca.listaDeLibros());
+                    libroBusca2 = sc.nextInt();
+                    sc.nextLine();
+                
+                    Libro libroPrestado = biblioteca.getArrayLibros().get(libroBusca2 - 1);
+                    try{
+                        biblioteca.devolverLibro(libroPrestado);
+                        System.out.println("\n\n--El libro a sido devuelto con exito!--\n\n");
+                    }catch(LibroNoPrestadoException e){
+                        System.out.println(e);
+                    }                                                                       
+                }else{
+                    System.out.println("--Primero debe agregar libros (Opcion '1')!--");
+                }
+                
+                break;
+                
+            case 4: 
+                System.out.println("\f\t\t--ESPACIO 'PRESTAMOS VENCIDOS'--\n\n");
+                
+                if(biblioteca.getArrayLibros().size() > 0){
+                    if(biblioteca.prestamosVencidos().size() > 0){
+                        for(Prestamo unPres : biblioteca.prestamosVencidos()){
+                            System.out.println("\n" + unPres.toString() + "\n");
+                        }
+                    }else{
+                        System.out.println("\n--No hay prestamos vencidos actualmente!--\n");
+                    }
+                }else{
+                    System.out.println("\n\n--Primero debe agregar libros (Opcion '1')!--\n\n");
+                }
+                
+                break;
+                
+            case 5: 
+                System.out.println("\f\t\t--ESPACIO 'QUIEN TIENE EL LIBRO'--\n\n");
+                
+                if(biblioteca.getArrayLibros().size() > 0){
+                    int libroBusca2;
+                    
+                    System.out.println("\n\nSeleccione un libro prestado (Indice int): ");
+                    System.out.println(biblioteca.listaDeLibros());
+                    libroBusca2 = sc.nextInt();
+                    sc.nextLine();
+                
+                    Libro libroAPrestar = biblioteca.getArrayLibros().get(libroBusca2 - 1);
+                    
+                    try{
+                        System.out.println(biblioteca.quienTieneElLibro(libroAPrestar));
+                    }catch(LibroNoPrestadoException e){
+                        System.out.println(e);
+                    } 
+                }else{
+                    System.out.println("--Primero debe agregar libros (Opcion '1')!--");
+                }
+                
+                break;
+                
+            case 6:
+                System.out.println("\f\t\t--ESPACIO 'LISTA DE LIBROS'--\n\n");
+                if(biblioteca.getArrayLibros().size() > 0){
+                    System.out.println(biblioteca.listaDeLibros());
+                }else{
+                    System.out.println("--Primero debe agregar libros (Opcion '1')!--");
+                }
+                
+                break;
+                
+            case 7:
+                System.out.println("\f\t\t--ESPACIO 'LISTA DE TITULOS'--\n\n");
+                
+                if(biblioteca.getArrayLibros().size() > 0){
+                    System.out.println(biblioteca.listaDeTitulos());
+                }else{
+                    System.out.println("--Primero debe agregar libros (Opcion '1')!--");
+                }
+                
+                break;
+                
+            case 8:
+                System.out.println("\f\t\t--ESPACIO 'ELIMINAR LIBRO'--\n\n");
+
+                if(biblioteca.getArrayLibros().size() > 0){
+                    int libroBusca3;
+                    System.out.printf("\n!--ADVERTENCIA--: ESTA ACCION NO SE PUEDE REVERTIR!\n\n" 
+                    + "Seleccione un libro a eliminar (Indice int):"); 
+                    System.out.println(biblioteca.listaDeLibros());
+                    libroBusca3 = sc.nextInt();
+                    sc.nextLine();
+
+                    if(libroBusca3 >= 1 && libroBusca3 <= biblioteca.getArrayLibros().size()){
+                        int indiceReal = libroBusca3 - 1; 
+                        biblioteca.getArrayLibros().remove(indiceReal);
+
+                        System.out.printf("\nEl libro ha sido removido con exito!\n");
+                    }else{
+                        System.out.printf("\nEl indice no pertenece a ningun libro\n");
+                    }
+                    }else{
+                        System.out.println("--Primero debe agregar libros (Opcion '1')--\n"); 
+                }
+
+                break;
+                default: 
+                    break;
+        }
+        
+        break;
+    }
     private static void nuevoLibro(){
         System.out.println("\f\t\t--ESPACIO 'NUEVO LIBRO'--\n\n");
                                 
