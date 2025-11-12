@@ -70,7 +70,8 @@ public class Prestamo{
      * Utiliza el metodo .add() de Calendar para sumar los diasPrestamo a la fechaRetiro.
      * Utiliza el metodo .after() de Calendar para comparar las fechas y determinar cual es mayor.
      * 
-     * @param true si la fecha pasada como parámetro es mayor que la fecha de vencimiento.
+     * @param la fecha que comparara para saber si el prestamo esta vencido.
+     * @return true si la fecha pasada como parámetro es mayor que la fecha de vencimiento.
      */
     public boolean vencido(Calendar p_fecha){
         Calendar fechaVencimiento = this.getFechaRetiro();
