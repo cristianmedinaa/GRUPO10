@@ -360,7 +360,7 @@ public class GestionBiblioteca {
     private static void nuevoSocioEstudiante(){
         System.out.println("\f\t\t--ESPACIO DE 'INGRESO ESTUDIANTE'--\n\n");
                                 
-        int dniSocio1, anioCursado;
+        int dniSocio1;
         String nombre1, carrera;
                                 
         System.out.println("Ingrese el nombre del estudiante:");
@@ -369,15 +369,11 @@ public class GestionBiblioteca {
         System.out.println("Ingrese la carrera del estudiante:");
         carrera = sc.nextLine();
                                     
-        System.out.println("Ingrese el año de cursado del estudiante (int):");
-        anioCursado = sc.nextInt();
-        sc.nextLine();
-                                    
         System.out.println("Ingrese el DNI del estudiante (int):");
         dniSocio1 = sc.nextInt();
         sc.nextLine();
                                     
-        biblioteca.nuevoSocioEstudiante(dniSocio1, nombre1, carrera, anioCursado);
+        biblioteca.nuevoSocioEstudiante(dniSocio1, nombre1, carrera);
                                     
         System.out.printf("\n\nEl estudiante %s fue agregado con exito!\n\n",nombre1);
     }
@@ -424,7 +420,7 @@ public class GestionBiblioteca {
         System.out.println("\f\t\t--ESPACIO 'LISTA DE DOCENTES RESPONSABLES'--\n\n");
                                 
         if(biblioteca.getArraySocios().size() > 0){
-            System.out.println(biblioteca.listaDocentesResponsables());
+            System.out.println(biblioteca.listaDeDocentesResponsables());
         }else{
             System.out.println("--Primero debe cargar socios!(Opcion '2')--\n"); 
         }                     
